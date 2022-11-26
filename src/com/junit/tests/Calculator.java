@@ -1,4 +1,4 @@
-package com.junit.class01;
+package com.junit.tests;
 
 public class Calculator {
 

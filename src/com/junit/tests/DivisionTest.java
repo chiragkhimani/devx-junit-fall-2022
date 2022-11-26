@@ -1,9 +1,10 @@
-package com.junit.class01;
+package com.junit.tests;
 
-import org.junit.After;
+import com.junit.groups.ChiragTest;
+import com.junit.groups.SmokeTest;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 // Test Case for div
 // 1. a=1, b=2, expected = 0
@@ -21,6 +22,7 @@ public class DivisionTest extends BaseTest{
 
     // Annotations - that is special symbol to tell java
     // this is not method but this is the test case
+    @Category({SmokeTest.class, ChiragTest.class})
     @Test
     public void verifyFirstNumberGreaterThanSecondNumber5() {
         int expectedResult = 2;

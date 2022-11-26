@@ -1,4 +1,4 @@
-package com.junit.class01;
+package com.junit.tests;
 
 
 // Test Cases
@@ -9,13 +9,15 @@ package com.junit.class01;
 //          5)   a=-15,  b= 4,      exp: -3
 //          6)   a= 15,  b =-4,     exp: 3
 
-import org.junit.After;
+import com.junit.groups.MariaTest;
+import com.junit.groups.SmokeTest;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class ModuloTest extends BaseTest{
 
+    @Category({SmokeTest.class, MariaTest.class})
     @Test
     public void verifyWithOneZeroAndOtherzero(){
         int expResult = 4;

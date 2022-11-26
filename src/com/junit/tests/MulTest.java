@@ -1,12 +1,14 @@
-package com.junit.class01;
+package com.junit.tests;
 
-import org.junit.After;
+import com.junit.groups.AlinaTest;
+import com.junit.groups.SmokeTest;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class MulTest extends BaseTest{
 
+    @Category({SmokeTest.class, AlinaTest.class})
     @Test
     public void checkBothNumbersArePositive() {
         int expectedResult = 6;
