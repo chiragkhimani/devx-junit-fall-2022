@@ -5,89 +5,43 @@ import com.junit.groups.SmokeTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-public class MulTest extends BaseTest{
+
+@RunWith(Parameterized.class)
+public class MulTest extends BaseTest {
+
+    int expectedResult, num1, num2; // instance
+
+
+    public MulTest(int num1, int num2, int expectedResult) { // local variables
+        this.expectedResult = expectedResult;
+        this.num1 = num1;
+        this.num2 = num2;
+    }
 
     @Category({SmokeTest.class, AlinaTest.class})
     @Test
-    public void checkBothNumbersArePositive() {
-        int expectedResult = 6;
-        int num1 = 2, num2 = 3;
-        int actualResult = c.mul(num1, num2);
-        String message = "expected=" + expectedResult + "actual=" + actualResult;
-        Assert.assertEquals(message, expectedResult, actualResult);
-    }
-
-    @Test
     public void checkSecondNumberIsOne() {
-        int expectedResult = 3;
-        int num1 = 1, num2 = 3;
         int actualResult = c.mul(num1, num2);
         String message = "expected=" + expectedResult + "actual=" + actualResult;
         Assert.assertEquals(message, expectedResult, actualResult);
     }
 
-    @Test
-    public void checkSecondNumberIsZero() {
-        int expectedResult = 0;
-        int num1 = 0, num2 = 3;
-        int actualResult = c.mul(num1, num2);
-        String message = "expected=" + expectedResult + "actual=" + actualResult;
-        Assert.assertEquals(message, expectedResult, actualResult);
+    @Parameterized.Parameters(name = "Running with {0} and {1} and expecting {2}")
+    public static Integer[][] supplyData() {
+        Integer data[][] = {
+                {0, 3, 0},
+                {2000, 300, 600000},
+                {1, 1, 1},
+                {0, 0, 0},
+                {-3, -2, 6},
+                {-3, 2, -6},
+                {3, -2, -6}
+        };
+        return data;
     }
 
-    @Test
-    public void checkBothNumbersAreLarge() {
-        int expectedResult = 600000;
-        int num1 = 2000, num2 = 300;
-        int actualResult = c.mul(num1, num2);
-        String message = "expected=" + expectedResult + "actual=" + actualResult;
-        Assert.assertEquals(message, expectedResult, actualResult);
-    }
-
-    @Test
-    public void checkBothNumbersAreOne() {
-        int expectedResult = 1;
-        int num1 = 1, num2 = 1;
-        int actualResult = c.mul(num1, num2);
-        String message = "expected=" + expectedResult + "actual=" + actualResult;
-        Assert.assertEquals(message, expectedResult, actualResult);
-    }
-
-    @Test
-    public void checkBothNumbersAreZero() {
-        int expectedResult = 0;
-        int num1 = 0, num2 = 0;
-        int actualResult = c.mul(num1, num2);
-        String message = "expected=" + expectedResult + "actual=" + actualResult;
-        Assert.assertEquals(message, expectedResult, actualResult);
-    }
-
-    @Test
-    public void checkBothNumbersAreNegative() {
-        int expectedResult = 6;
-        int num1 = -3, num2 = -2;
-        int actualResult = c.mul(num1, num2);
-        String message = "expected=" + expectedResult + "actual=" + actualResult;
-        Assert.assertEquals(message, expectedResult, actualResult);
-    }
-
-    @Test
-    public void checkFirstNumbersIsNegative() {
-        int expectedResult = -6;
-        int num1 = -3, num2 = 2;
-        int actualResult = c.mul(num1, num2);
-        String message = "expected=" + expectedResult + "actual=" + actualResult;
-        Assert.assertEquals(message, expectedResult, actualResult);
-    }
-
-    @Test
-    public void checkSecondNumberIsNegative() {
-        int expectedResult = -6;
-        int num1 = 2, num2 = -3;
-        int actualResult = c.mul(num1, num2);
-        String message = "expected=" + expectedResult + "actual=" + actualResult;
-        Assert.assertEquals(message, expectedResult, actualResult);
-    }
 
 }
